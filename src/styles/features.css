@@ -1,0 +1,302 @@
+/* src/features/portfolio/features.css */
+
+/* 1. Brand Color System Variables */
+:root {
+  --color-dark-charcoal: #2A2625;   /* The solid dark base from the flyer */
+  --color-dark-chocolate: #1C1514;  /* Rich, high-end deep brown background wrapper */
+  --color-periwinkle: #AEC2F7;      /* The accent color swatch from his logo flyer */
+  --color-ice-blue: #E8F1F5;        /* Light contrast background elements */
+  --color-taupe: #CCC6C2;           /* Elegant text/border styling neutral */
+  --color-pure-white: #FFFFFF;
+}
+
+/* 2. Portfolio Layout Main Container */
+.portfolio-container {
+  padding: 40px 16px;
+  max-width: 1200px;
+  margin: 0 auto;
+  font-family: 'Didot', 'Bodoni MT', 'Georgia', serif; /* Matching the chef's elegant serif font */
+}
+
+/* 3. Filter Controls (Responsive Flexbox) */
+.portfolio-filter-bar {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap; /* Prevents button overflow on smaller mobile screens */
+  gap: 10px;
+  margin-bottom: 35px;
+}
+
+.filter-btn {
+  background: transparent;
+  border: 1px solid var(--color-taupe);
+  color: var(--color-taupe);
+  padding: 10px 18px;
+  cursor: pointer;
+  font-size: 0.9rem;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+  transition: all 0.3s ease;
+}
+
+.filter-btn.active, .filter-btn:hover {
+  background: var(--color-dark-charcoal);
+  border-color: var(--color-periwinkle);
+  color: var(--color-periwinkle);
+}
+
+/* 4. Responsive Grid Layout (Mobile-First approach) */
+.portfolio-grid {
+  display: grid;
+  grid-template-columns: 1fr; /* 1 Column default on small mobile devices */
+  gap: 24px;
+}
+
+/* 5. Luxury Portfolio Cards */
+.portfolio-card {
+  background: var(--color-dark-chocolate);
+  border: 1px solid rgba(204, 198, 194, 0.15); /* Subtly tinted taupe border */
+  overflow: hidden;
+  cursor: pointer;
+  transition: transform 0.3s cubic-bezier(0.25, 1, 0.5, 1), box-shadow 0.3s ease;
+}
+
+.portfolio-card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 12px 24px rgba(0, 0, 0, 0.4);
+}
+
+.card-image-wrapper {
+  position: relative;
+  height: 260px;
+  width: 100%;
+  overflow: hidden;
+}
+
+.card-image {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 0.6s ease;
+}
+
+.portfolio-card:hover .card-image {
+  transform: scale(1.04);
+}
+
+.card-category {
+  position: absolute;
+  top: 12px;
+  left: 12px;
+  background: rgba(42, 38, 37, 0.9);
+  color: var(--color-ice-blue);
+  padding: 4px 10px;
+  font-size: 0.75rem;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+}
+
+.card-info {
+  padding: 20px;
+}
+
+.card-title {
+  font-size: 1.35rem;
+  color: var(--color-ice-blue);
+  margin: 0 0 8px 0;
+  font-weight: 400;
+}
+
+.card-description {
+  font-family: 'Arial', sans-serif; /* Clean contrast body typography */
+  font-size: 0.88rem;
+  color: var(--color-taupe);
+  line-height: 1.6;
+  margin: 0;
+}
+
+/* 6. Lightbox Modal Overlay (Responsive Layout) */
+.gallery-modal-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: rgba(28, 21, 20, 0.97); /* Rich dark chocolate backdrop */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 1000;
+  padding: 16px;
+}
+
+.modal-content-wrapper {
+  position: relative;
+  max-width: 950px;
+  width: 100%;
+  background: var(--color-dark-charcoal);
+  border: 1px solid var(--color-taupe);
+  padding: 24px;
+  box-sizing: border-box;
+}
+
+.close-modal-btn {
+  position: absolute;
+  top: 10px;
+  right: 16px;
+  background: none;
+  border: none;
+  color: var(--color-taupe);
+  font-size: 2.2rem;
+  cursor: pointer;
+  line-height: 1;
+}
+
+.close-modal-btn:hover {
+  color: var(--color-periwinkle);
+}
+
+.modal-header h3 {
+  color: var(--color-ice-blue);
+  font-size: 1.6rem;
+  margin: 0 0 6px 0;
+  font-weight: 400;
+}
+
+.modal-header p {
+  font-family: 'Arial', sans-serif;
+  color: var(--color-taupe);
+  margin: 0 0 20px 0;
+  font-size: 0.9rem;
+}
+
+/* Horizontal Swiper for Event Sub-Photos */
+.modal-slideshow-container {
+  display: flex;
+  overflow-x: auto;
+  gap: 12px;
+  padding-bottom: 8px;
+  scrollbar-width: thin;
+  scrollbar-color: var(--color-taupe) transparent;
+}
+
+.modal-slide-image {
+  height: 300px; /* Highly optimized mobile viewport baseline */
+  width: auto;
+  object-fit: cover;
+  flex-shrink: 0;
+  border: 1px solid rgba(255, 255, 255, 0.05);
+}
+/* Custom Badges Layout Container */
+.card-badge-container {
+  position: absolute;
+  top: 12px;
+  left: 12px;
+  right: 12px;
+  display: flex;
+  justify-content: space-between; /* Pushes category to the left, location to the right */
+  align-items: center;
+  pointer-events: none; /* Allows clicks to pass through to the main card */
+}
+
+/* Location Badge Styling */
+.card-location {
+  background: var(--color-periwinkle); /* Beautiful contrast soft blue from his flyer */
+  color: var(--color-dark-chocolate); /* Dark text for crisp legibility */
+  padding: 4px 10px;
+  font-size: 0.72rem;
+  font-weight: 600;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+  border-radius: 2px;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.3);
+}
+
+/* ==========================================================================
+   7. MEDIA QUERIES (Responsive Breakpoints for Tablets and Desktops)
+   ========================================================================== */
+
+/* Tablets (Portrait and Landscape) */
+@media screen and (min-width: 600px) {
+  .portfolio-grid {
+    grid-template-columns: repeat(2, 1fr); /* Splits seamlessly into 2 columns */
+  }
+
+  .modal-slide-image {
+    height: 420px; /* Gives images more breathing room on medium devices */
+  }
+}
+
+/* Desktops / Laptops */
+@media screen and (min-width: 1024px) {
+  .portfolio-container {
+    padding: 60px 20px;
+  }
+
+  .portfolio-grid {
+    grid-template-columns: repeat(3, 1fr); /* Sleek 3-column matrix for desktop displays */
+    gap: 30px;
+  }
+
+  .modal-content-wrapper {
+    padding: 40px;
+  }
+
+  .modal-slide-image {
+    height: 500px; /* Full 5-star display canvas */
+  }
+}
+
+/* Custom File Input Theme Wrapper */
+.file-upload-input {
+  background: var(--color-dark-charcoal) !important;
+  border: 1px dashed var(--color-taupe) !important; /* Elegant dashed border look for uploads */
+  color: var(--color-taupe) !important;
+  cursor: pointer;
+}
+
+.file-upload-input::file-selector-button {
+  background: var(--color-dark-chocolate);
+  color: var(--color-periwinkle);
+  border: 1px solid var(--color-periwinkle);
+  padding: 6px 12px;
+  margin-right: 15px;
+  cursor: pointer;
+  font-family: 'Arial', sans-serif;
+  text-transform: uppercase;
+  font-size: 0.75rem;
+  letter-spacing: 0.5px;
+  transition: all 0.3s ease;
+}
+
+.file-upload-input::file-selector-button:hover {
+  background: var(--color-periwinkle);
+  color: var(--color-dark-chocolate);
+}
+
+/* Custom File Input Theme Wrapper */
+.file-upload-input {
+  background: var(--color-dark-charcoal) !important;
+  border: 1px dashed var(--color-taupe) !important; /* Elegant dashed border look for uploads */
+  color: var(--color-taupe) !important;
+  cursor: pointer;
+}
+
+.file-upload-input::file-selector-button {
+  background: var(--color-dark-chocolate);
+  color: var(--color-periwinkle);
+  border: 1px solid var(--color-periwinkle);
+  padding: 6px 12px;
+  margin-right: 15px;
+  cursor: pointer;
+  font-family: 'Arial', sans-serif;
+  text-transform: uppercase;
+  font-size: 0.75rem;
+  letter-spacing: 0.5px;
+  transition: all 0.3s ease;
+}
+
+.file-upload-input::file-selector-button:hover {
+  background: var(--color-periwinkle);
+  color: var(--color-dark-chocolate);
+}

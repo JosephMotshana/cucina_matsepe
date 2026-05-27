@@ -1,0 +1,668 @@
+/* src/global.css */
+
+body {
+  margin: 0;
+  padding: 0;
+  background-color: #1c1514; /* Deep luxury chocolate brown */
+}
+
+.page-wrapper {
+  background-color: #1c1514;
+  min-height: 100vh;
+  padding: 40px 0;
+}
+
+.page-title {
+  text-align: center;
+  color: #e8f1f5; /* Ice Blue */
+  font-family: 'Didot', 'Bodoni MT', 'Georgia', serif;
+  font-size: 2.5rem;
+  letter-spacing: 2px;
+  margin-bottom: 20px;
+}
+
+/* ==========================================================================
+   GLOBAL LAYOUT NAVIGATION & FOOTER STYLES
+   ========================================================================== */
+
+/* Navbar Wrapper */
+.main-navbar {
+  background-color: #121212; /* Clean deep background black */
+  border-bottom: 1px solid rgba(204, 198, 194, 0.15);
+  position: sticky;
+  top: 0;
+  z-index: 2000;
+  padding: 15px 20px;
+}
+
+.nav-container {
+  max-width: 1200px;
+  margin: 0 auto;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.nav-logo {
+  font-family: 'Didot', 'Bodoni MT', 'Georgia', serif;
+  color: #e8f1f5;
+  font-size: 1.4rem;
+  letter-spacing: 1.5px;
+  text-transform: uppercase;
+  font-weight: 500;
+}
+
+.nav-links {
+  display: flex;
+  gap: 24px;
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+.nav-item a {
+  color: #ccc6c2; /* Muted Taupe */
+  text-decoration: none;
+  font-size: 0.9rem;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+  transition: color 0.3s ease;
+}
+
+.nav-item a:hover {
+  color: #aec2f7; /* Periwinkle Blue hover glow */
+}
+
+/* Call to Action Button across menus */
+.nav-cta-btn {
+  background: transparent;
+  border: 1px solid #aec2f7;
+  color: #aec2f7;
+  padding: 6px 14px;
+  text-transform: uppercase;
+  font-size: 0.8rem;
+  letter-spacing: 1px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.nav-cta-btn:hover {
+  background: #aec2f7;
+  color: #1c1514;
+}
+
+/* Mobile Toggle Hamburger Hidden by Default on Desktop */
+.nav-toggle {
+  display: none;
+  background: none;
+  border: none;
+  color: #ccc6c2;
+  font-size: 1.5rem;
+  cursor: pointer;
+}
+
+/* Footer Section styling */
+.main-footer {
+  background: #121212;
+  border-top: 1px solid rgba(204, 198, 194, 0.1);
+  padding: 30px 20px;
+  text-align: center;
+  margin-top: 60px;
+}
+
+.footer-text {
+  color: #ccc6c2;
+  font-size: 0.85rem;
+  margin: 0 0 10px 0;
+}
+
+.footer-sub {
+  font-family: 'Arial', sans-serif;
+  color: #666;
+  font-size: 0.75rem;
+  margin: 0;
+}
+
+/* ==========================================================================
+   MOBILE NAVIGATION BREAKPOINTS
+   ========================================================================== */
+@media screen and (max-width: 768px) {
+  .nav-toggle {
+    display: block; /* Reveals hamburger button on mobile viewports */
+  }
+
+  .nav-links {
+    display: none; /* We keep it hidden initially until toggled */
+    flex-direction: column;
+    position: absolute;
+    top: 100%;
+    left: 0;
+    right: 0;
+    background: #121212;
+    padding: 20px;
+    border-bottom: 1px solid rgba(204, 198, 194, 0.15);
+    gap: 16px;
+    text-align: center;
+  }
+
+  .nav-links.mobile-open {
+    display: flex; /* Opens up block layout menu vertically */
+  }
+}
+
+/* Highlights the currently active route item page */
+.nav-item a.active {
+  color: var(--color-periwinkle) !important;
+  border-bottom: 2px solid var(--color-periwinkle);
+  padding-bottom: 4px;
+}
+
+@media screen and (max-width: 768px) {
+  .nav-item a.active {
+    border-bottom: none;
+    padding-bottom: 0;
+    font-weight: bold;
+  }
+}
+/* ==========================================================================
+   HOME PAGE STYLES (Luxury & Mobile-First)
+   ========================================================================== */
+
+/* Hero Section Base */
+.hero-section {
+  position: relative;
+  min-height: 75vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  padding: 40px 20px;
+  background: linear-gradient(rgba(28, 21, 20, 0.6), rgba(28, 21, 20, 0.85)), 
+              url('../assets/hero.png') no-repeat center center/cover;
+}
+
+.hero-subtitle {
+  color: #aec2f7; /* Soft Periwinkle brand color */
+  font-size: 0.95rem;
+  letter-spacing: 4px;
+  text-transform: uppercase;
+  margin-bottom: 12px;
+}
+
+.hero-title {
+  font-family: 'Didot', 'Bodoni MT', 'Georgia', serif;
+  color: #e8f1f5; /* Ice Blue */
+  font-size: 2.8rem;
+  font-weight: 400;
+  letter-spacing: 2px;
+  line-height: 1.2;
+  margin: 0 0 20px 0;
+  max-width: 800px;
+}
+
+.hero-tagline {
+  font-family: 'Arial', sans-serif;
+  color: #ccc6c2; /* Muted Taupe */
+  font-size: 1.1rem;
+  line-height: 1.6;
+  max-width: 600px;
+  margin: 0 0 35px 0;
+}
+
+/* Luxury Call-to-Action Action Buttons */
+.hero-actions {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+  width: 100%;
+  max-width: 320px;
+}
+
+.btn-primary {
+  background: #aec2f7;
+  color: #1c1514;
+  border: none;
+  padding: 14px 28px;
+  font-size: 0.95rem;
+  letter-spacing: 1.5px;
+  text-transform: uppercase;
+  cursor: pointer;
+  font-weight: 600;
+  transition: all 0.3s ease;
+}
+
+.btn-primary:hover {
+  background: #e8f1f5;
+  letter-spacing: 2px;
+}
+
+.btn-secondary {
+  background: transparent;
+  border: 1px solid #ccc6c2;
+  color: #e8f1f5;
+  padding: 14px 28px;
+  font-size: 0.95rem;
+  letter-spacing: 1.5px;
+  text-transform: uppercase;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.btn-secondary:hover {
+  border-color: #aec2f7;
+  color: #aec2f7;
+}
+
+/* Core Split Highlights Section */
+.home-highlights {
+  max-width: 1200px;
+  margin: 60px auto 20px auto;
+  padding: 0 20px;
+}
+
+.highlights-grid {
+  display: grid;
+  grid-template-columns: 1fr; /* 1 Column default on mobile screens */
+  gap: 30px;
+}
+
+.highlight-card {
+  background: #2a2625; /* Dark Charcoal from flyer */
+  border: 1px solid rgba(204, 198, 194, 0.1);
+  padding: 30px 24px;
+  text-align: left;
+  transition: transform 0.3s ease;
+}
+
+.highlight-card:hover {
+  transform: translateY(-3px);
+}
+
+.highlight-icon {
+  font-size: 1.8rem;
+  color: #aec2f7;
+  margin-bottom: 15px;
+}
+
+.highlight-card h3 {
+  font-family: 'Didot', 'Bodoni MT', 'Georgia', serif;
+  color: #e8f1f5;
+  font-size: 1.4rem;
+  margin: 0 0 10px 0;
+  font-weight: 400;
+}
+
+.highlight-card p {
+  font-family: 'Arial', sans-serif;
+  color: #ccc6c2;
+  font-size: 0.9rem;
+  line-height: 1.6;
+  margin: 0;
+}
+
+/* ==========================================================================
+   RESPONSIVE HOME BREAKPOINTS
+   ========================================================================== */
+@media screen and (min-width: 600px) {
+  .hero-title {
+    font-size: 4rem;
+  }
+  
+  .hero-actions {
+    flex-direction: row; /* Puts buttons side-by-side on larger displays */
+    max-width: none;
+    justify-content: center;
+  }
+}
+
+@media screen and (min-width: 900px) {
+  .highlights-grid {
+    grid-template-columns: repeat(3, 1fr); /* Clean 3-column layout on desktops */
+  }
+}
+
+/* ==========================================================================
+   ABOUT PAGE STYLES (Luxury Manifesto Editorial Layout)
+   ========================================================================== */
+
+.about-container {
+  max-width: 900px;
+  margin: 0 auto;
+  padding: 40px 20px;
+}
+
+/* Manifesto Section Setup */
+.manifesto-hero {
+  text-align: center;
+  margin-bottom: 60px;
+}
+
+.manifesto-tagline {
+  color: var(--color-periwinkle);
+  font-size: 1rem;
+  letter-spacing: 4px;
+  text-transform: uppercase;
+  margin-bottom: 16px;
+  display: block;
+}
+
+.manifesto-title {
+  font-family: 'Didot', 'Bodoni MT', 'Georgia', serif;
+  color: var(--color-ice-blue);
+  font-size: 2.2rem;
+  font-weight: 400;
+  letter-spacing: 1px;
+  margin: 0 0 30px 0;
+}
+
+.manifesto-body {
+  font-family: 'Georgia', serif;
+  color: var(--color-taupe);
+  font-size: 1.15rem;
+  line-height: 1.8;
+  font-style: italic;
+  max-width: 750px;
+  margin: 0 auto;
+}
+
+.manifesto-body p {
+  margin-bottom: 24px;
+}
+
+/* Core Values Grid Framework */
+.values-section {
+  background: var(--color-dark-chocolate);
+  border: 1px solid rgba(204, 198, 194, 0.15);
+  padding: 40px 24px;
+  margin-top: 60px;
+}
+
+.values-title {
+  font-family: 'Didot', 'Bodoni MT', 'Georgia', serif;
+  color: var(--color-ice-blue);
+  font-size: 1.8rem;
+  text-align: center;
+  margin-bottom: 40px;
+  font-weight: 400;
+  letter-spacing: 1px;
+}
+
+.values-grid {
+  display: grid;
+  grid-template-columns: 1fr; /* Stacked columns default on smartphones */
+  gap: 24px;
+}
+
+.value-item {
+  border-left: 2px solid var(--color-periwinkle);
+  padding-left: 20px;
+}
+
+.value-item h4 {
+  font-family: 'Didot', 'Bodoni MT', 'Georgia', serif;
+  color: var(--color-ice-blue);
+  font-size: 1.2rem;
+  margin: 0 0 6px 0;
+  font-weight: 400;
+  letter-spacing: 0.5px;
+}
+
+.value-item p {
+  font-family: 'Arial', sans-serif;
+  color: var(--color-taupe);
+  font-size: 0.9rem;
+  line-height: 1.5;
+  margin: 0;
+}
+
+/* ==========================================================================
+   RESPONSIVE ABOUT BREAKPOINTS
+   ========================================================================== */
+@media screen and (min-width: 600px) {
+  .manifesto-title {
+    font-size: 3rem;
+  }
+  
+  .values-section {
+    padding: 50px 40px;
+  }
+  
+  .values-grid {
+    grid-template-columns: repeat(2, 1fr); /* Splits into two neat layout columns on tablet/desktop */
+  }
+}
+
+/* ==========================================================================
+   SERVICES PAGE STYLES (Culinary-Focused & Mobile-First)
+   ========================================================================== */
+
+.services-container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 40px 20px;
+}
+
+.services-intro {
+  text-align: center;
+  max-width: 700px;
+  margin: 0 auto 50px auto;
+}
+
+.services-intro p {
+  font-family: 'Arial', sans-serif;
+  color: var(--color-taupe);
+  font-size: 1.05rem;
+  line-height: 1.6;
+}
+
+/* Master Services Responsive Matrix */
+.services-matrix {
+  display: grid;
+  grid-template-columns: 1fr; /* Single column layout on small devices */
+  gap: 35px;
+}
+
+.service-display-card {
+  background: var(--color-dark-chocolate);
+  border: 1px solid rgba(204, 198, 194, 0.15);
+  display: flex;
+  flex-direction: column; /* Stacks image and text vertically on mobile devices */
+  overflow: hidden;
+  transition: box-shadow 0.3s ease;
+}
+
+.service-display-card:hover {
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.5);
+}
+
+.service-graphic-side {
+  width: 100%;
+  height: 250px;
+  background-color: var(--color-dark-charcoal);
+  position: relative;
+}
+
+/* Fallback/Placeholder styling that uses brand tones beautifully */
+.service-placeholder-bg {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 3rem;
+  background: linear-gradient(135deg, var(--color-dark-charcoal), #121212);
+}
+
+.service-content-side {
+  padding: 30px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  flex-grow: 1;
+}
+
+.service-content-side h3 {
+  font-family: 'Didot', 'Bodoni MT', 'Georgia', serif;
+  color: var(--color-ice-blue);
+  font-size: 1.75rem;
+  margin: 0 0 12px 0;
+  font-weight: 400;
+}
+
+.service-description-text {
+  font-family: 'Arial', sans-serif;
+  color: var(--color-taupe);
+  font-size: 0.95rem;
+  line-height: 1.6;
+  margin: 0 0 20px 0;
+}
+
+/* Culinary Pillars Tag Wrapper */
+.culinary-tags-wrapper {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin-bottom: 25px;
+}
+
+.cuisine-tag {
+  background: rgba(174, 194, 247, 0.1);
+  border: 1px solid var(--color-periwinkle);
+  color: var(--color-periwinkle);
+  font-size: 0.75rem;
+  padding: 4px 10px;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  border-radius: 2px;
+}
+
+.service-book-btn {
+  background: transparent;
+  border: 1px solid var(--color-taupe);
+  color: var(--color-ice-blue);
+  padding: 12px 24px;
+  font-family: 'Didot', 'Bodoni MT', 'Georgia', serif;
+  font-size: 0.95rem;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  cursor: pointer;
+  align-self: flex-start;
+  transition: all 0.3s ease;
+  text-decoration: none;
+}
+
+.service-book-btn:hover {
+  background: var(--color-ice-blue);
+  color: var(--color-dark-chocolate);
+  border-color: var(--color-ice-blue);
+}
+
+/* ==========================================================================
+   RESPONSIVE SERVICES BREAKPOINTS
+   ========================================================================== */
+@media screen and (min-width: 850px) {
+  .service-display-card {
+    flex-direction: row; /* Transforms into a sleek horizontal split layout on desktop panels */
+    height: 340px;
+  }
+
+  .service-graphic-side {
+    width: 40%; /* Image takes up 40% of horizontal landscape width */
+    height: 100%;
+  }
+
+  .service-content-side {
+    width: 60%;
+    padding: 40px;
+  }
+}
+
+/* ==========================================================================
+   CONTACT PAGE STYLES (Clean Layout & Social Integration)
+   ========================================================================== */
+
+.contact-layout-grid {
+  display: grid;
+  grid-template-columns: 1fr; /* 1 Column default for mobile touch displays */
+  gap: 40px;
+  max-width: 1100px;
+  margin: 0 auto;
+  padding: 20px;
+}
+
+/* Info Panel Layout styling */
+.contact-info-panel {
+  background: var(--color-dark-chocolate);
+  border: 1px solid rgba(204, 198, 194, 0.15);
+  padding: 40px 30px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.contact-info-panel h3 {
+  font-family: 'Didot', 'Bodoni MT', 'Georgia', serif;
+  color: var(--color-ice-blue);
+  font-size: 1.8rem;
+  margin: 0 0 15px 0;
+  font-weight: 400;
+}
+
+.contact-info-panel p {
+  font-family: 'Arial', sans-serif;
+  color: var(--color-taupe);
+  font-size: 0.95rem;
+  line-height: 1.6;
+  margin: 0 0 30px 0;
+}
+
+/* Social Icon Menu Channel Wrappers */
+.social-channels-track {
+  display: flex;
+  gap: 16px;
+  flex-wrap: wrap;
+}
+
+.social-profile-card {
+  background: var(--color-dark-charcoal);
+  border: 1px solid var(--color-taupe);
+  color: var(--color-ice-blue);
+  padding: 12px 18px;
+  text-decoration: none;
+  font-family: 'Arial', sans-serif;
+  font-size: 0.85rem;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  font-weight: 600;
+  transition: all 0.3s ease;
+  
+  /* 🌟 Flex Alignment Engine for Lucide Vector Icons */
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+}
+
+/* Standardizes SVG stroke rendering sizes for custom elements like TikTok */
+.social-profile-card svg {
+  display: block;
+  flex-shrink: 0;
+}
+
+.social-profile-card:hover {
+  background: var(--color-periwinkle);
+  color: var(--color-dark-chocolate);
+  border-color: var(--color-periwinkle);
+  transform: translateY(-2px);
+}
+
+/* ==========================================================================
+   RESPONSIVE CONTACT BREAKPOINTS
+   ========================================================================== */
+@media screen and (min-width: 850px) {
+  .contact-layout-grid {
+    grid-template-columns: 1.1fr 0.9fr; /* Asymmetric elegant split desktop views */
+    gap: 50px;
+  }
+}
