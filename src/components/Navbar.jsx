@@ -3,6 +3,9 @@
 import React, { useState } from 'react';
 import { NavLink, Link } from 'react-router-dom';
 
+// 🌟 Import your brand image asset natively from the assets directory
+import logoImg from '../assets/images/cucina-matsepe-logo.png';
+
 function Navbar() {
   const [isOpen, setIsOpen] = useState(false);
 
@@ -15,7 +18,8 @@ function Navbar() {
         
         {/* Brand Main Heading Identity Link */}
         <Link to="/" className="nav-logo" onClick={closeMenu}>
-          Cucina Matsepe
+          {/* 🌟 Replaced text mark with your brand logo image asset */}
+          <img src={logoImg} alt="Cucina Matsepe Logo" className="nav-logo-image" />
         </Link>
 
         {/* Smartphone Action Hamburger Toggle */}
@@ -37,11 +41,6 @@ function Navbar() {
           <li className="nav-item">
             <NavLink to="/services" className={({ isActive }) => isActive ? 'active' : ''} onClick={closeMenu}>
               Services
-            </NavLink>
-          </li>
-          <li className="nav-item">
-            <NavLink to="/portfolio" className={({ isActive }) => isActive ? 'active' : ''} onClick={closeMenu}>
-              Gallery
             </NavLink>
           </li>
           <li className="nav-item">

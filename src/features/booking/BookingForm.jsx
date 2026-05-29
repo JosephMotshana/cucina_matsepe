@@ -1,7 +1,7 @@
 // src/features/booking/BookingForm.jsx
 
 import React, { useState } from 'react';
-import '../portfolio/features.css'; // Keeps everything uniform using our brand color tokens
+import '../../styles/features.css'; // Keeps everything uniform using our brand color tokens
 
 function BookingForm() {
   const [formData, setFormData] = useState({

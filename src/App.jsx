@@ -10,7 +10,7 @@ import Footer from './components/Footer';
 // Your Page Components Modules Imports
 import Home from './pages/Home';
 import ServicesPage from './pages/ServicesPage'; 
-import PortfolioPage from './pages/PortfolioPage';
+// import PortfolioPage from './pages/PortfolioPage';
 import About from './pages/About';
 import Contact from './pages/Contact'; 
 import BookChef from './pages/BookChef';
@@ -28,7 +28,7 @@ function App() {
         <Routes>
           <Route path="/" element={<Home />} />
           <Route path="/services" element={<ServicesPage />} />
-          <Route path="/portfolio" element={<PortfolioPage />} />
+          {/* <Route path="/portfolio" element={<PortfolioPage />} /> */}
           <Route path="/about" element={<About />} />
           <Route path="/contact" element={<Contact />} />
           <Route path="/book" element={<BookChef />} />

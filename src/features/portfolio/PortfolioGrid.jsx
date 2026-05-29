@@ -2,7 +2,7 @@
 
 import React, { useState } from 'react';
 import { pastEvents } from './PortfolioData';
-import './features.css'; 
+import '../../tyles/features.css'; 
 
 function PortfolioGrid() {
   const [activeFilter, setActiveFilter] = useState('All');

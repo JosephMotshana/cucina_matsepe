@@ -3,31 +3,37 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 
+// 🌟 Import your assets natively so the compiler processes the file paths correctly
+import bespokeImg from '../assets/images/8C98DC00-B306-4BF6-A7A6-3B54AFEA5725.jpg';
+import cateringImg from '../assets/images/IMG_9759.PNG';
+import estateImg from '../assets/images/dish3.jpg';
+import consultingImg from '../assets/images/dish1.jpg';
+
 function ServicesPage() {
   const culinaryOfferings = [
     {
       title: 'Bespoke Dining (Indoor Dates)',
       description: 'An intimate, high-end fine dining execution tailored entirely to your home kitchen environment. Perfect for private celebrations, anniversaries, or high-profile romantic evenings requiring absolute attention to detail.',
       tags: ['French Technique', 'Italian Elements', 'Plated Courses'],
-      icon: '🍽️'
+      icon: bespokeImg // Pointing directly to the imported file asset
     },
     {
       title: 'Private Events & Luxury Catering',
       description: 'Comprehensive menu conceptualization and aesthetic catering configurations for milestone corporate dinners, upscale birthdays, and VIP gatherings across elite local regions.',
       tags: ['Mediterranean Platters', 'Modern South African Fusion', 'Canapés'],
-      icon: '✨'
+      icon: cateringImg
     },
     {
       title: 'Estate Residence Cooking',
       description: 'Full-day premium culinary curation directly inside luxury residential estates. Providing personalized elite breakfast structures, family lunches, and exquisite dinner courses with seamless kitchen execution.',
       tags: ['Multi-Cuisine Adaptability', 'Seasonal Menus', 'Private Residency'],
-      icon: '🏡'
+      icon: estateImg
     },
     {
       title: 'Restaurant Consulting',
       description: 'Professional commercial consulting services for upscale hospitality spaces looking to optimize kitchen performance, train staff, or overhaul menu profiles.',
       tags: ['Menu Development', 'Operational Workflow', 'Culinary Elevation'],
-      icon: '📋'
+      icon: consultingImg
     }
   ];
 
@@ -46,11 +52,13 @@ function ServicesPage() {
         {culinaryOfferings.map((service, index) => (
           <div key={index} className="service-display-card">
             
-            {/* Visual Media Placeholder Side */}
+            {/* 📷 Fixed Visual Media Side: Now rendering an explicit image element */}
             <div className="service-graphic-side">
-              <div className="service-placeholder-bg">
-                {service.icon}
-              </div>
+              <img 
+                src={service.icon} 
+                alt={service.title} 
+                className="service-card-img" 
+              />
             </div>
 
             {/* Content Logic Info Side */}
