@@ -1,0 +1,103 @@
+/* ==========================================
+   LUXURY COLLAGE MEDIA CANVAS ARCHITECTURE
+   ========================================== */
+.events-collage-track {
+  display: flex;
+  flex-direction: column;
+  gap: 5rem;
+  margin-top: 3rem;
+}
+
+.event-collage-group {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+}
+
+.collage-header {
+  border-left: 3px solid #c5a880; /* Premium subtle accent accent */
+  padding-left: 1.25rem;
+  margin-bottom: 0.5rem;
+}
+
+.collage-tag {
+  font-size: 0.75rem;
+  text-transform: uppercase;
+  letter-spacing: 2px;
+  color: #c5a880;
+  display: block;
+  margin-bottom: 0.25rem;
+}
+
+.collage-header h3 {
+  font-size: 1.75rem;
+  font-weight: 600;
+  margin: 0;
+  color: #ffffff;
+}
+
+.collage-header p {
+  font-size: 0.95rem;
+  color: #a0a0a0;
+  margin-top: 0.25rem;
+}
+
+/* Dynamic Grid Frame Structure */
+.collage-grid-canvas {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+  gap: 1rem;
+}
+
+.collage-card {
+  position: relative;
+  border-radius: 6px;
+  overflow: hidden;
+  background-color: #121212;
+  aspect-ratio: 4 / 5; /* Elegant portrait crop alignment */
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
+  transition: transform 0.4s ease;
+}
+
+.collage-card:hover {
+  transform: translateY(-4px);
+}
+
+.collage-media {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+
+/* Explicit video item card adjustments */
+.collage-card.video-card {
+  grid-column: span 1;
+}
+
+.collage-card-overlay {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  background: linear-gradient(to top, rgba(0,0,0,0.85), transparent);
+  padding: 1rem;
+  pointer-events: none;
+}
+
+.collage-card-overlay span {
+  font-size: 0.7rem;
+  color: #c5a880;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+}
+
+@media (max-width: 768px) {
+  .events-collage-track {
+    gap: 3.5rem;
+  }
+  .collage-grid-canvas {
+    grid-template-columns: repeat(auto-fill, minmax(160px, 1fr));
+    gap: 0.5rem;
+  }
+}
