@@ -1,21 +1,254 @@
 /* ==========================================
+   GLOBAL DESIGN VARIABLES & RESET
+   ========================================== */
+:root {
+  --primary-gold: #F5D285; /* Sourced directly from cucina.PNG */
+  --deep-black: #000000;
+  --charcoal: #1a1a1a;
+  --soft-gray: #333333;
+  --font-main: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+}
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html, body {
+  width: 100%;
+  max-width: 100%;
+  overflow-x: hidden; /* Strict defense layout block to stop any left-to-right spillover */
+  background-color: var(--primary-gold);
+  color: var(--deep-black);
+  font-family: var(--font-main);
+  scroll-behavior: smooth;
+  -webkit-font-smoothing: antialiased;
+}
+
+/* ==========================================
+   STICKY NAVIGATION ARCHITECTURE (UPDATED)
+   ========================================== */
+.navbar {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 80px;
+  /* Background color set to the exact gold from cucina_2.PNG */
+  background-color: #F9D99A; 
+  /* Softer shadow since the background is now light */
+  box-shadow: 0 2px 15px rgba(0, 0, 0, 0.08); 
+  z-index: 9999;
+  border-bottom: 2px solid var(--deep-black); /* Optional: adds a crisp border like the logo frame */
+}
+
+.navbar-container {
+  max-width: 1200px;
+  height: 100%;
+  margin: 0 auto;
+  padding: 0 1.5rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.nav-brand-logo-link {
+  display: flex;
+  align-items: center;
+  height: 100%;
+}
+
+.nav-brand-logo {
+  height: 55px;
+  width: auto;
+  object-fit: contain;
+}
+
+.nav-links {
+  display: flex;
+  gap: 2.5rem;
+  list-style: none;
+}
+
+.nav-links a {
+  /* Changed from gold to deep black to contrast against the new background */
+  color: var(--deep-black); 
+  text-decoration: none;
+  font-size: 0.95rem;
+  font-weight: 700; /* Slightly bolder for clean readability */
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  transition: opacity 0.3s ease;
+}
+
+.nav-links a:hover {
+  opacity: 0.6;
+}
+
+/* Hamburger Icon Toggle Button (Visible on Mobile Only) */
+.mobile-hamburger-btn {
+  display: none;
+  background: none;
+  border: none;
+  /* Changed to black so it's visible on mobile viewports */
+  color: var(--deep-black); 
+  cursor: pointer;
+}
+
+/* ==========================================
+   PAGE SECTIONS CONTAINMENT MASTER
+   ========================================== */
+section {
+  width: 100%;
+  padding: 6rem 1.5rem;
+  box-sizing: border-box;
+}
+
+.section-container {
+  max-width: 1200px;
+  margin: 0 auto;
+  width: 100%;
+}
+
+.section-title {
+  font-size: 2.5rem;
+  font-weight: 800;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  color: var(--deep-black);
+  margin-bottom: 0.5rem;
+  position: relative;
+}
+
+.section-subtitle {
+  font-size: 1.1rem;
+  color: var(--soft-gray);
+  margin-bottom: 3.5rem;
+  max-width: 600px;
+}
+
+/* ==========================================
+   HERO AREA (PAGE VIEW 1)
+   ========================================== */
+.hero-section {
+  height: 100vh;
+  min-height: 600px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: linear-gradient(rgba(0,0,0,0.65), rgba(0,0,0,0.65)), url('/cucina.PNG');
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  text-align: center;
+  padding-top: 80px; /* Shifts content beneath sticky navbar */
+}
+
+.hero-content h1 {
+  font-size: 4.5rem;
+  color: var(--primary-gold);
+  text-transform: uppercase;
+  letter-spacing: 2px;
+  margin-bottom: 0.5rem;
+  font-weight: 800;
+}
+
+.hero-content p {
+  font-size: 1.5rem;
+  color: #ffffff;
+  text-transform: uppercase;
+  letter-spacing: 4px;
+  margin-bottom: 2.5rem;
+  font-weight: 500;
+}
+
+.hero-cta-btn {
+  display: inline-block;
+  background-color: var(--primary-gold);
+  color: var(--deep-black);
+  padding: 1rem 2.5rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 2px;
+  text-decoration: none;
+  border-radius: 4px;
+  border: 2px solid var(--primary-gold);
+  transition: all 0.3s ease;
+}
+
+.hero-cta-btn:hover {
+  background-color: transparent;
+  color: var(--primary-gold);
+}
+
+/* ==========================================
+   SERVICES CARDS ENGINE (PAGE VIEW 2)
+   ========================================== */
+.services-section {
+  background-color: #fcebc4; /* Enhanced luxury depth contrast block */
+}
+
+.services-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 2rem;
+}
+
+.service-card {
+  background-color: var(--deep-black);
+  padding: 3rem 2rem;
+  border-radius: 6px;
+  color: #ffffff;
+  box-shadow: 0 10px 30px rgba(0,0,0,0.15);
+  transition: transform 0.3s ease;
+}
+
+.service-card:hover {
+  transform: translateY(-5px);
+}
+
+.service-icon {
+  color: var(--primary-gold);
+  margin-bottom: 1.5rem;
+}
+
+.service-card h3 {
+  font-size: 1.5rem;
+  color: var(--primary-gold);
+  margin-bottom: 1rem;
+}
+
+.service-card p {
+  color: #cccccc;
+  font-size: 0.95rem;
+  line-height: 1.6;
+}
+
+/* ==========================================
    LUXURY COLLAGE MEDIA CANVAS ARCHITECTURE
    ========================================== */
+.portfolio-section {
+  background-color: var(--primary-gold);
+}
+
 .events-collage-track {
   display: flex;
   flex-direction: column;
   gap: 5rem;
   margin-top: 3rem;
+  width: 100%;
 }
 
 .event-collage-group {
   display: flex;
   flex-direction: column;
   gap: 1.5rem;
+  width: 100%;
 }
 
 .collage-header {
-  border-left: 3px solid #c5a880; /* Premium subtle accent accent */
+  border-left: 3px solid var(--deep-black);
   padding-left: 1.25rem;
   margin-bottom: 0.5rem;
 }
@@ -24,43 +257,47 @@
   font-size: 0.75rem;
   text-transform: uppercase;
   letter-spacing: 2px;
-  color: #c5a880;
+  color: var(--deep-black);
+  font-weight: 700;
   display: block;
   margin-bottom: 0.25rem;
 }
 
 .collage-header h3 {
   font-size: 1.75rem;
-  font-weight: 600;
+  font-weight: 700;
   margin: 0;
-  color: #ffffff;
+  color: var(--deep-black);
 }
 
 .collage-header p {
   font-size: 0.95rem;
-  color: #a0a0a0;
+  color: var(--soft-gray);
   margin-top: 0.25rem;
 }
 
-/* Dynamic Grid Frame Structure */
 .collage-grid-canvas {
   display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+  grid-template-columns: repeat(auto-fit, minmax(min(100%, 280px), 1fr));
   gap: 1rem;
+  width: 100%;
 }
 
 .collage-card {
   position: relative;
   border-radius: 6px;
   overflow: hidden;
-  background-color: #121212;
-  aspect-ratio: 4 / 5; /* Elegant portrait crop alignment */
-  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
-  transition: transform 0.4s ease;
+  background-color: var(--deep-black);
+  aspect-ratio: 4 / 5;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.15);
+  border: 1px solid rgba(0, 0, 0, 0.1);
+  transition: transform 0.4s ease, box-shadow 0.4s ease;
+  width: 100%;
 }
 
 .collage-card:hover {
   transform: translateY(-4px);
+  box-shadow: 0 8px 30px rgba(0, 0, 0, 0.25);
 }
 
 .collage-media {
@@ -70,7 +307,6 @@
   display: block;
 }
 
-/* Explicit video item card adjustments */
 .collage-card.video-card {
   grid-column: span 1;
 }
@@ -80,24 +316,255 @@
   bottom: 0;
   left: 0;
   right: 0;
-  background: linear-gradient(to top, rgba(0,0,0,0.85), transparent);
+  background: linear-gradient(to top, rgba(0,0,0,0.9), transparent);
   padding: 1rem;
   pointer-events: none;
 }
 
 .collage-card-overlay span {
   font-size: 0.7rem;
-  color: #c5a880;
+  color: var(--primary-gold);
   text-transform: uppercase;
   letter-spacing: 1px;
+  font-weight: 600;
+}
+
+/* ==========================================
+   RESERVATIONS ENGINE ENGINE (PAGE VIEWS 4 & 5)
+   ========================================== */
+.booking-contact-section {
+  background-color: #fcebc4;
+}
+
+.split-engine-grid {
+  display: grid;
+  grid-template-columns: 1.2fr 0.8fr;
+  gap: 4rem;
+  align-items: start;
+}
+
+/* Inputs Architecture */
+.chef-booking-form {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 1.5rem;
+}
+
+.form-group {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+.form-group.full-width {
+  grid-column: span 2;
+}
+
+.form-group label {
+  font-size: 0.85rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  color: var(--deep-black);
+  letter-spacing: 0.5px;
+}
+
+.form-group input,
+.form-group select,
+.form-group textarea {
+  width: 100%;
+  padding: 1rem;
+  border-radius: 4px;
+  border: 2px solid var(--deep-black);
+  background-color: #ffffff;
+  color: var(--deep-black);
+  font-family: var(--font-main);
+  font-size: 0.95rem;
+}
+
+.form-group textarea {
+  resize: vertical;
+}
+
+.form-group input:focus,
+.form-group select:focus,
+.form-group textarea:focus {
+  outline: none;
+  background-color: #fffdf9;
+}
+
+.submit-booking-btn {
+  grid-column: span 2;
+  background-color: var(--deep-black);
+  color: var(--primary-gold);
+  border: 2px solid var(--deep-black);
+  padding: 1.2rem;
+  font-size: 1rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  border-radius: 4px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.submit-booking-btn:hover {
+  background-color: transparent;
+  color: var(--deep-black);
+}
+
+/* Contact Deck Panel */
+.contact-info-panel h3 {
+  font-size: 2rem;
+  margin-bottom: 1rem;
+  text-transform: uppercase;
+}
+
+.contact-info-panel p {
+  color: var(--soft-gray);
+  line-height: 1.6;
+  margin-bottom: 2rem;
+}
+
+.social-channels-track {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+.social-profile-card {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background-color: var(--deep-black);
+  color: #ffffff;
+  padding: 1rem 1.25rem;
+  border-radius: 6px;
+  text-decoration: none;
+  transition: transform 0.2s ease;
+}
+
+.social-profile-card:hover {
+  transform: translateX(4px);
+}
+
+.social-card-left {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  color: var(--primary-gold);
+  font-weight: 600;
+}
+
+.social-card-left span {
+  color: #ffffff;
+}
+
+.social-tag {
+  font-size: 0.85rem;
+  color: #888888;
+}
+
+.whatsapp-highlight {
+  border: 2px solid #25d366;
+}
+
+.whatsapp-icon-inline {
+  color: #25d366;
+}
+
+/* ==========================================
+   FOOTER ARCHITECTURE
+   ========================================== */
+.footer {
+  background-color: var(--deep-black);
+  color: #ffffff;
+  text-align: center;
+  padding: 2.5rem 1.5rem;
+  font-size: 0.85rem;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+}
+
+.footer p {
+  color: #888888;
+}
+
+/* ==========================================
+   STRICT MOBILE FLUIDITY RESPONSIVE SYSTEM
+   ========================================== */
+@media (max-width: 992px) {
+  .split-engine-grid {
+    grid-template-columns: 1fr;
+    gap: 3.5rem;
+  }
 }
 
 @media (max-width: 768px) {
+  section {
+    padding: 4rem 1rem;
+  }
+
+  .section-title {
+    font-size: 2rem;
+  }
+
+  .hero-content h1 {
+    font-size: 2.8rem;
+  }
+
+  .hero-content p {
+    font-size: 1.1rem;
+    letter-spacing: 2px;
+  }
+
+  /* Hamburger Navigation Deployment Overlay */
+  .mobile-hamburger-btn {
+    display: block;
+    z-index: 10000;
+  }
+
+  .nav-links {
+    position: fixed;
+    top: 0;
+    right: -100%;
+    width: 75%;
+    max-width: 300px;
+    height: 100vh;
+    background-color: var(--deep-black);
+    flex-direction: column;
+    padding: 100px 2rem 2rem 2rem;
+    transition: right 0.4s ease-in-out;
+    box-shadow: -5px 0 20px rgba(0,0,0,0.4);
+    gap: 2rem;
+  }
+
+  .nav-links.mobile-open {
+    right: 0;
+  }
+
+  /* Grid Conversions for safety layout structures */
+  .chef-booking-form {
+    grid-template-columns: 1fr;
+  }
+
+  .form-group.full-width {
+    grid-column: span 1;
+  }
+
+  .submit-booking-btn {
+    grid-column: span 1;
+  }
+
   .events-collage-track {
     gap: 3.5rem;
   }
+  
+  .collage-header h3 {
+    font-size: 1.4rem;
+  }
+
   .collage-grid-canvas {
-    grid-template-columns: repeat(auto-fill, minmax(160px, 1fr));
+    grid-template-columns: repeat(auto-fit, minmax(min(100%, 140px), 1fr));
     gap: 0.5rem;
   }
 }
