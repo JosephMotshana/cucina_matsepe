@@ -526,6 +526,164 @@ section {
 .footer p {
   color: #888888;
 }
+/* ==========================================
+   CHEF PROFILE PROFILE SECTION (NEW STYLES)
+   ========================================== */
+.chef-profile-section {
+  background-color: var(--primary-gold);
+  border-top: 1px solid rgba(0, 0, 0, 0.05);
+}
+
+.chef-profile-grid {
+  display: grid;
+  grid-template-columns: 0.9fr 1.1fr;
+  gap: 4.5rem;
+  align-items: center;
+}
+
+/* Featured Photo Wrap System */
+.chef-image-wrapper {
+  position: relative;
+  width: 100%;
+  aspect-ratio: 4 / 5;
+  border-radius: 8px;
+  background-color: var(--deep-black);
+  box-shadow: 0 15px 40px rgba(0, 0, 0, 0.18);
+  border: 2px solid var(--deep-black);
+}
+
+.chef-featured-photo {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  border-radius: 6px;
+  display: block;
+}
+
+/* Absolute Floating Authority Badge */
+.chef-experience-badge {
+  position: absolute;
+  bottom: -20px;
+  right: -20px;
+  background-color: var(--deep-black);
+  color: var(--primary-gold);
+  padding: 1.2rem 2rem;
+  border-radius: 4px;
+  box-shadow: 0 8px 25px rgba(0,0,0,0.3);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  text-transform: uppercase;
+}
+
+.chef-experience-badge h4 {
+  font-size: 1.1rem;
+  font-weight: 800;
+  letter-spacing: 1px;
+  line-height: 1.1;
+  color: var(--primary-gold);
+}
+
+.chef-experience-badge p {
+  font-size: 0.75rem;
+  color: #ffffff;
+  letter-spacing: 1.5px;
+  margin-top: 0.25rem;
+}
+
+/* Biography & Content Stack Elements */
+.chef-bio-content {
+  display: flex;
+  flex-direction: column;
+}
+
+.chef-name-heading {
+  font-size: 3rem;
+  font-weight: 800;
+  text-transform: uppercase;
+  color: var(--deep-black);
+  margin-top: 0.25rem;
+  margin-bottom: 1.5rem;
+  letter-spacing: -0.5px;
+}
+
+.chef-narrative-bio {
+  font-size: 1.1rem;
+  line-height: 1.7;
+  color: var(--soft-gray);
+  margin-bottom: 2.5rem;
+}
+
+/* Credibility Items List Setup */
+.credibility-stack {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+  margin-bottom: 3rem;
+}
+
+.credibility-item {
+  display: flex;
+  gap: 1.25rem;
+  align-items: flex-start;
+}
+
+.credibility-check-icon {
+  color: var(--deep-black);
+  flex-shrink: 0;
+  margin-top: 0.15rem;
+}
+
+.credibility-item h4 {
+  font-size: 1.15rem;
+  font-weight: 700;
+  color: var(--deep-black);
+  text-transform: uppercase;
+  margin-bottom: 0.25rem;
+  letter-spacing: 0.5px;
+}
+
+.credibility-item p {
+  font-size: 0.95rem;
+  color: var(--soft-gray);
+  line-height: 1.5;
+}
+
+.inline-cta {
+  display: inline-block;
+  width: auto !important;
+  padding: 1rem 2.5rem;
+  text-decoration: none;
+}
+
+/* Responsive Overrides for Chef Block */
+@media (max-width: 992px) {
+  .chef-profile-grid {
+    grid-template-columns: 1fr;
+    gap: 4rem;
+  }
+  
+  .chef-image-wrapper {
+    max-width: 480px;
+    margin: 0 auto;
+  }
+  
+  .chef-experience-badge {
+    right: 0px;
+  }
+}
+
+@media (max-width: 768px) {
+  .chef-name-heading {
+    font-size: 2.2rem;
+  }
+  
+  .chef-narrative-bio {
+    font-size: 1rem;
+  }
+  
+  .credibility-item h4 {
+    font-size: 1.05rem;
+  }
+}
 
 /* ==========================================
    STRICT MOBILE FLUIDITY RESPONSIVE SYSTEM

@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { ChefHat, Calendar, Sparkles, Award, Mail, Menu, X } from 'lucide-react';
+import { ChefHat, Calendar, Sparkles, Award, Mail, Menu, X, CheckCircle, ShieldCheck } from 'lucide-react';
 import './index.css'; // Global CSS theme injection
 
 export default function App() {
@@ -30,7 +30,7 @@ export default function App() {
   useEffect(() => {
     const slideTimer = setInterval(() => {
       setCurrentSlideIndex((prevIndex) => (prevIndex + 1) % slideshowImages.length);
-    }, 5000); // Transitions automatically every 5 seconds
+    }, 5000); 
 
     return () => clearInterval(slideTimer);
   }, [slideshowImages.length]);
@@ -158,6 +158,7 @@ export default function App() {
           <ul className={`nav-links ${isMobileMenuOpen ? 'mobile-open' : ''}`}>
             <li><a href="#home" onClick={() => setIsMobileMenuOpen(false)}>Home</a></li>
             <li><a href="#services" onClick={() => setIsMobileMenuOpen(false)}>Services</a></li>
+            <li><a href="#chef" onClick={() => setIsMobileMenuOpen(false)}>About Chef</a></li>
             <li><a href="#portfolio" onClick={() => setIsMobileMenuOpen(false)}>Gallery</a></li>
             <li><a href="#book" onClick={() => setIsMobileMenuOpen(false)}>Booking &amp; Contact</a></li>
           </ul>
@@ -168,7 +169,6 @@ export default function App() {
           PAGE VIEW 1: HOME (HERO LANDING SLIDESHOW)
           ========================================== */}
       <section id="home" className="hero-section">
-        {/* Dynamic Background Images Layer */}
         <div className="hero-slideshow-container">
           {slideshowImages.map((src, index) => (
             <div
@@ -177,7 +177,6 @@ export default function App() {
               style={{ backgroundImage: `url(${src})` }}
             />
           ))}
-          {/* Subtle Dark Overlay for Typography Contrast */}
           <div className="slideshow-dimmer-layer" />
         </div>
 
@@ -227,6 +226,67 @@ export default function App() {
       </section>
 
       {/* ==========================================
+          NEW SECTION: CHEF PROFILE & CREDIBILITY
+          ========================================== */}
+      <section id="chef" className="chef-profile-section">
+        <div className="section-container">
+          <div className="chef-profile-grid">
+            
+            {/* Left Column: Image Canvas wrapper */}
+            <div className="chef-image-wrapper">
+              <img src="/chef.jpg" alt="Chef Matsepe" className="chef-featured-photo" />
+              <div className="chef-experience-badge">
+                <h4>Mastery Driven</h4>
+                <p>Commercial Authority</p>
+              </div>
+            </div>
+
+            {/* Right Column: Bio & Authority Checkpoints */}
+            <div className="chef-bio-content">
+              <span className="collage-tag">The Mastermind</span>
+              <h2 className="chef-name-heading">Chef Matsepe</h2>
+              <p className="chef-narrative-bio">
+                Culinary architecture forged at the intersection of high-end corporate logistics and luxury private residency deployments. Known for structuring progressive culinary narratives, Chef Matsepe transforms premium ingredients into structural sensory milestones.
+              </p>
+
+              {/* Credibility Tracks Stack */}
+              <div className="credibility-stack">
+                <div className="credibility-item">
+                  <ShieldCheck size={24} className="credibility-check-icon" />
+                  <div>
+                    <h4>Corporate Brand Execution</h4>
+                    <p>Trusted menu deployment partner for blue-chip brand events including high-profile activations like the Porsche Corporate Event series.</p>
+                  </div>
+                </div>
+
+                <div className="credibility-item">
+                  <CheckCircle size={24} className="credibility-check-icon" />
+                  <div>
+                    <h4>Bespoke Estate Residency Systems</h4>
+                    <p>Vast background engineering long-term customized culinary programs inside elite residential private family spaces throughout Gauteng and Cape Town.</p>
+                  </div>
+                </div>
+
+                <div className="credibility-item">
+                  <CheckCircle size={24} className="credibility-check-icon" />
+                  <div>
+                    <h4>Commercial Consultancy Pedigree</h4>
+                    <p>Expert menu design architectural structure, kitchen operation diagnostics, and masterclass team instruction logistics.</p>
+                  </div>
+                </div>
+              </div>
+
+              {/* Instant Call To Action Anchor */}
+              <div className="chef-action-row">
+                <a href="#book" className="submit-booking-btn inline-cta">Book Consultation</a>
+              </div>
+            </div>
+
+          </div>
+        </div>
+      </section>
+
+      {/* ==========================================
           PAGE VIEW 3: PORTFOLIO (COLLAGE LAYOUT DECK)
           ========================================== */}
       <section id="portfolio" className="portfolio-section">
@@ -239,7 +299,7 @@ export default function App() {
             {/* DECK 1: PORSCHE EVENT */}
             <div className="event-collage-group">
               <div className="collage-header">
-                <span className="collage-tag">Corporate</span>
+                <span className="collage-tag">Collection // Corporate</span>
                 <h3>Porsche Corporate Event</h3>
                 <p>High-end corporate menu deployment tailored for elite brand settings.</p>
               </div>
@@ -251,7 +311,7 @@ export default function App() {
             {/* DECK 2: GALENTINE'S DAY */}
             <div className="event-collage-group">
               <div className="collage-header">
-                <span className="collage-tag">Private Dining</span>
+                <span className="collage-tag">Collection // Private Dining</span>
                 <h3>Galentine's Day Fine Dining</h3>
                 <p>Bespoke tasting menus crafted for intimate luxury social tables.</p>
               </div>
@@ -263,7 +323,7 @@ export default function App() {
             {/* DECK 3: MOTHER'S DAY */}
             <div className="event-collage-group">
               <div className="collage-header">
-                <span className="collage-tag">Residency</span>
+                <span className="collage-tag">Collection // Residency</span>
                 <h3>Mother's Day</h3>
                 <p>Elegant, multi-course estate culinary setups for refined family gatherings.</p>
               </div>
@@ -275,7 +335,7 @@ export default function App() {
             {/* DECK 4: RESTAURANT CONSULTING */}
             <div className="event-collage-group">
               <div className="collage-header">
-                <span className="collage-tag">Consulting</span>
+                <span className="collage-tag">Collection // Consulting</span>
                 <h3>Restaurant Consulting</h3>
                 <p>Conceptual menu development, plating blueprints, and team instruction logs.</p>
               </div>
@@ -337,10 +397,11 @@ export default function App() {
                 </div>
 
                 <div className="form-group">
-                  <label htmlFor="location">Gauteng Region</label>
+                  <label htmlFor="location">Location</label>
                   <select id="location" name="location" value={formData.location} onChange={handleChange}>
                     <option value="Johannesburg">Johannesburg</option>
-                    <option value="Midrand">Midrand</option>
+                    <option value=" Pretoria">Pretoria</option>
+                    <option value="Cape Town">Cape Town</option>
                   </select>
                 </div>
 
