@@ -3,6 +3,7 @@
    ========================================== */
 :root {
   --primary-gold: #F5D285; /* Sourced directly from cucina.PNG */
+  --navbar-gold: #F9D99A;  /* Exact background color from sampled logo matching */
   --deep-black: #000000;
   --charcoal: #1a1a1a;
   --soft-gray: #333333;
@@ -35,12 +36,10 @@ html, body {
   left: 0;
   width: 100%;
   height: 80px;
-  /* Background color set to the exact gold from cucina_2.PNG */
-  background-color: #F9D99A; 
-  /* Softer shadow since the background is now light */
+  background-color: var(--navbar-gold); 
   box-shadow: 0 2px 15px rgba(0, 0, 0, 0.08); 
   z-index: 9999;
-  border-bottom: 2px solid var(--deep-black); /* Optional: adds a crisp border like the logo frame */
+  border-bottom: 2px solid var(--deep-black); 
 }
 
 .navbar-container {
@@ -72,11 +71,10 @@ html, body {
 }
 
 .nav-links a {
-  /* Changed from gold to deep black to contrast against the new background */
   color: var(--deep-black); 
   text-decoration: none;
   font-size: 0.95rem;
-  font-weight: 700; /* Slightly bolder for clean readability */
+  font-weight: 700; 
   text-transform: uppercase;
   letter-spacing: 1px;
   transition: opacity 0.3s ease;
@@ -86,12 +84,11 @@ html, body {
   opacity: 0.6;
 }
 
-/* Hamburger Icon Toggle Button (Visible on Mobile Only) */
+/* Hamburger Icon Toggle Button */
 .mobile-hamburger-btn {
   display: none;
-  background: var(--primary-gold);
+  background: transparent;
   border: none;
-  /* Changed to black so it's visible on mobile viewports */
   color: var(--deep-black); 
   cursor: pointer;
 }
@@ -129,20 +126,61 @@ section {
 }
 
 /* ==========================================
-   HERO AREA (PAGE VIEW 1)
+   HERO AREA & SLIDESHOW ENGINE (PAGE VIEW 1)
    ========================================== */
 .hero-section {
+  position: relative;
   height: 100vh;
   min-height: 600px;
   display: flex;
   align-items: center;
   justify-content: center;
-  background: linear-gradient(rgba(0,0,0,0.65), rgba(0,0,0,0.65)), url('/cucina.PNG');
+  overflow: hidden; /* Guards layout tracking from image bleed */
+  text-align: center;
+  padding-top: 80px; 
+}
+
+.hero-slideshow-container {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 1; /* Sits completely behind the content layout stacks */
+}
+
+.slideshow-frame {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
   background-size: cover;
   background-position: center;
   background-repeat: no-repeat;
-  text-align: center;
-  padding-top: 80px; /* Shifts content beneath sticky navbar */
+  opacity: 0;
+  transition: opacity 1.2s ease-in-out; /* Smooth cinematic fade changes */
+  will-change: opacity;
+}
+
+.slideshow-frame.active {
+  opacity: 1;
+}
+
+.slideshow-dimmer-layer {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.65); /* Protects crisp text readability */
+  z-index: 2;
+  pointer-events: none;
+}
+
+.hero-content {
+  position: relative;
+  z-index: 3; /* Lifted safely over background and overlay masking systems */
 }
 
 .hero-content h1 {
@@ -530,17 +568,25 @@ section {
     width: 75%;
     max-width: 300px;
     height: 100vh;
-    background-color: var(--primary-gold);
+    background-color: var(--navbar-gold); /* Keeps the mobile panel matching the gold theme */
     flex-direction: column;
     padding: 100px 2rem 2rem 2rem;
     transition: right 0.4s ease-in-out;
-    box-shadow: -5px 0 20px rgba(0,0,0,0.4);
+    box-shadow: -5px 0 20px rgba(0,0,0,0.15);
     gap: 2rem;
+    display: flex;
   }
 
   .nav-links.mobile-open {
     right: 0;
-    color: var(--deep-black);
+  }
+
+  /* Fixed mobile visibility conflict: black links layout clean over light gold background drawer */
+  .nav-links.mobile-open li a {
+    color: var(--deep-black) !important;
+    font-size: 1.2rem;
+    display: block;
+    width: 100%;
   }
 
   /* Grid Conversions for safety layout structures */

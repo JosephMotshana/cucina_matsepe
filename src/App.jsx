@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { ChefHat, Calendar, Sparkles, Award, Mail, Menu, X } from 'lucide-react';
 import './index.css'; // Global CSS theme injection
 
@@ -16,6 +16,24 @@ export default function App() {
 
   // Mobile navigation menu toggle state
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
+
+  // ==========================================
+  // HOME PAGE AUTOMATED SLIDESHOW ENGINE
+  // ==========================================
+  const slideshowImages = [
+    '/show1.jpg',
+    '/show2.jpg',
+    '/show3.jpg'
+  ];
+  const [currentSlideIndex, setCurrentSlideIndex] = useState(0);
+
+  useEffect(() => {
+    const slideTimer = setInterval(() => {
+      setCurrentSlideIndex((prevIndex) => (prevIndex + 1) % slideshowImages.length);
+    }, 5000); // Transitions automatically every 5 seconds
+
+    return () => clearInterval(slideTimer);
+  }, [slideshowImages.length]);
 
   const handleChange = (e) => {
     const { name, value } = e.target;
@@ -40,7 +58,7 @@ export default function App() {
 
   const motherDayImages = [
     "/Mother's Day/event1.jpg",
-    "/Mother's Day/event2.mp4", // Handles dynamically as an inline video element
+    "/Mother's Day/event2.mp4", 
     "/Mother's Day/event3.jpg",
     "/Mother's Day/event4.jpg",
     "/Mother's Day/event5.jpg",
@@ -100,7 +118,6 @@ export default function App() {
     "/Resturant Consulting/event18.jpg"
   ];
 
-  // Helper function to verify media formatting extensions
   const renderMediaItem = (srcPath, index, tag) => {
     if (srcPath.toLowerCase().endsWith('.mp4')) {
       return (
@@ -130,7 +147,6 @@ export default function App() {
             <img src="/cucina.PNG" alt="Cucina Matsepe Logo" className="nav-brand-logo" />
           </a>
 
-          {/* Hamburger Icon Toggle Button (Visible on Mobile Only) */}
           <button 
             className="mobile-hamburger-btn" 
             onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
@@ -139,7 +155,6 @@ export default function App() {
             {isMobileMenuOpen ? <X size={28} /> : <Menu size={28} />}
           </button>
           
-          {/* Navigation Link Stack */}
           <ul className={`nav-links ${isMobileMenuOpen ? 'mobile-open' : ''}`}>
             <li><a href="#home" onClick={() => setIsMobileMenuOpen(false)}>Home</a></li>
             <li><a href="#services" onClick={() => setIsMobileMenuOpen(false)}>Services</a></li>
@@ -150,9 +165,22 @@ export default function App() {
       </nav>
 
       {/* ==========================================
-          PAGE VIEW 1: HOME (HERO LANDING)
+          PAGE VIEW 1: HOME (HERO LANDING SLIDESHOW)
           ========================================== */}
       <section id="home" className="hero-section">
+        {/* Dynamic Background Images Layer */}
+        <div className="hero-slideshow-container">
+          {slideshowImages.map((src, index) => (
+            <div
+              key={index}
+              className={`slideshow-frame ${index === currentSlideIndex ? 'active' : ''}`}
+              style={{ backgroundImage: `url(${src})` }}
+            />
+          ))}
+          {/* Subtle Dark Overlay for Typography Contrast */}
+          <div className="slideshow-dimmer-layer" />
+        </div>
+
         <div className="hero-content">
           <h1>Cucina Matsepe</h1>
           <p>Commercial Private Chef</p>
@@ -211,7 +239,7 @@ export default function App() {
             {/* DECK 1: PORSCHE EVENT */}
             <div className="event-collage-group">
               <div className="collage-header">
-                <span className="collage-tag">Collection // Corporate</span>
+                <span className="collage-tag">Corporate</span>
                 <h3>Porsche Corporate Event</h3>
                 <p>High-end corporate menu deployment tailored for elite brand settings.</p>
               </div>
@@ -223,7 +251,7 @@ export default function App() {
             {/* DECK 2: GALENTINE'S DAY */}
             <div className="event-collage-group">
               <div className="collage-header">
-                <span className="collage-tag">Collection // Private Dining</span>
+                <span className="collage-tag">Private Dining</span>
                 <h3>Galentine's Day Fine Dining</h3>
                 <p>Bespoke tasting menus crafted for intimate luxury social tables.</p>
               </div>
@@ -235,7 +263,7 @@ export default function App() {
             {/* DECK 3: MOTHER'S DAY */}
             <div className="event-collage-group">
               <div className="collage-header">
-                <span className="collage-tag">Collection // Residency</span>
+                <span className="collage-tag">Residency</span>
                 <h3>Mother's Day</h3>
                 <p>Elegant, multi-course estate culinary setups for refined family gatherings.</p>
               </div>
@@ -247,7 +275,7 @@ export default function App() {
             {/* DECK 4: RESTAURANT CONSULTING */}
             <div className="event-collage-group">
               <div className="collage-header">
-                <span className="collage-tag">Collection // Consulting</span>
+                <span className="collage-tag">Consulting</span>
                 <h3>Restaurant Consulting</h3>
                 <p>Conceptual menu development, plating blueprints, and team instruction logs.</p>
               </div>
@@ -332,7 +360,6 @@ export default function App() {
               <p>For instant media placement, corporate booking timelines, or directly arranged consultative engagements, reach out across our secure communications track.</p>
               
               <div className="social-channels-track">
-                {/* Instagram Profile Card (Inline SVG fixed) */}
                 <a href="https://www.instagram.com/_cucinamatsepe?igsh=eWQ2ejE1d295aGF2&utm_source=qr" target="_blank" rel="noopener noreferrer" className="social-profile-card">
                   <div className="social-card-left">
                     <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="social-icon-brand">
@@ -345,7 +372,6 @@ export default function App() {
                   <span className="social-tag">@_cucinamatsepe</span>
                 </a>
 
-                {/* TikTok Profile Card (Inline SVG fixed) */}
                 <a href="https://www.tiktok.com/@cucina_matsepe?_r=1&_t=ZS-96ifg52TSXC" target="_blank" rel="noopener noreferrer" className="social-profile-card">
                   <div className="social-card-left">
                     <svg viewBox="0 0 24 24" width="18" height="18" fill="currentColor" className="social-icon-brand">
@@ -356,7 +382,6 @@ export default function App() {
                   <span className="social-tag">@cucina_matsepe</span>
                 </a>
 
-                {/* Facebook Profile Card (Inline SVG fixed) */}
                 <a href="https://www.facebook.com/share/1HssVzNnV4/?mibextid=wwXIfr" target="_blank" rel="noopener noreferrer" className="social-profile-card">
                   <div className="social-card-left">
                     <svg viewBox="0 0 24 24" width="18" height="18" fill="currentColor" className="social-icon-brand">
@@ -367,7 +392,6 @@ export default function App() {
                   <span className="social-tag">Profile</span>
                 </a>
 
-                {/* Email Direct Contact */}
                 <a href="mailto:kamogelomatsepe24@gmail.com" className="social-profile-card contact-direct">
                   <div className="social-card-left">
                     <Mail size={16} />
@@ -376,7 +400,6 @@ export default function App() {
                   <span>kamogelomatsepe24@gmail.com</span>
                 </a>
 
-                {/* WhatsApp Link Direct Contact */}
                 <a href="https://wa.me/27829558407" target="_blank" rel="noopener noreferrer" className="social-profile-card contact-direct whatsapp-highlight">
                   <div className="social-card-left">
                     <svg viewBox="0 0 24 24" width="16" height="16" fill="currentColor" className="whatsapp-icon-inline">
