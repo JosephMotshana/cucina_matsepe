@@ -89,7 +89,7 @@ html, body {
 /* Hamburger Icon Toggle Button (Visible on Mobile Only) */
 .mobile-hamburger-btn {
   display: none;
-  background: none;
+  background: var(--primary-gold);
   border: none;
   /* Changed to black so it's visible on mobile viewports */
   color: var(--deep-black); 
@@ -530,7 +530,7 @@ section {
     width: 75%;
     max-width: 300px;
     height: 100vh;
-    background-color: var(--deep-black);
+    background-color: var(--primary-gold);
     flex-direction: column;
     padding: 100px 2rem 2rem 2rem;
     transition: right 0.4s ease-in-out;
@@ -540,6 +540,7 @@ section {
 
   .nav-links.mobile-open {
     right: 0;
+    color: var(--deep-black);
   }
 
   /* Grid Conversions for safety layout structures */
